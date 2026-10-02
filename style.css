@@ -1,0 +1,402 @@
+/* Reset & Variáveis Globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+  --bg-main: #0073e6;
+  --bg-dark: #051329;
+  --card-bg: #0a1f3d;
+  --border-color: #143566;
+  --accent-yellow: #ffcb05;
+  --accent-yellow-dark: #e5b300;
+  --accent-blue: #0099ff;
+  --text-white: #ffffff;
+  --text-muted: #a0c4ff;
+}
+
+body {
+  background: #030b17 linear-gradient(180deg, #005bb5 0%, #030b17 800px);
+  color: var(--text-white);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px 10px;
+}
+
+/* Container Principal */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--bg-dark);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 85, 204, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Cabeçalho */
+header {
+  padding: 30px 20px 20px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(0, 132, 255, 0.25) 0%, transparent 70%);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.watermark-top {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.banner-top {
+  display: inline-block;
+  background: rgba(0, 115, 230, 0.2);
+  border: 1px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.banner-top span {
+  color: var(--accent-yellow);
+}
+
+/* Logótipo Cidade Nobre (Coroa SVG + Texto Inclinado) */
+.nobre-logo-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-4deg);
+  margin: 10px 0 25px 0;
+  user-select: none;
+}
+
+.crown-svg {
+  width: 65px;
+  height: 45px;
+  margin-bottom: -5px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.nobre-text {
+  font-size: 4.8rem;
+  font-weight: 900;
+  color: var(--text-white);
+  letter-spacing: -2px;
+  line-height: 0.85;
+  text-shadow: 0px 6px 18px rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+header h1 span {
+  color: var(--accent-yellow);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+/* Navegação / Abas */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #040d1c;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 170px;
+  padding: 16px 12px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+}
+
+.tab-btn:hover {
+  background-color: rgba(0, 153, 255, 0.1);
+  color: var(--text-white);
+}
+
+.tab-btn.active {
+  background-color: var(--card-bg);
+  color: var(--accent-yellow);
+  border-bottom: 3px solid var(--accent-yellow);
+}
+
+/* Conteúdo das Abas */
+.tab-content {
+  display: none;
+  padding: 30px;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: var(--accent-yellow);
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--accent-yellow);
+  padding-left: 12px;
+}
+
+.desc-text {
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Grids e Cards */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-blue);
+  padding: 22px;
+  border-radius: 10px;
+}
+
+.card h3 {
+  color: var(--text-white);
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, #0d2850 0%, #06152a 100%);
+  border-left-color: var(--accent-yellow);
+  text-align: center;
+}
+
+.badge-yellow, .badge-blue {
+  display: block;
+  padding: 10px;
+  margin-top: 12px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.badge-yellow { background-color: var(--accent-yellow); color: #000; }
+.badge-blue { background-color: rgba(0, 153, 255, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
+
+.styled-list {
+  list-style: none;
+}
+
+.styled-list li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  color: #d0e4ff;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.styled-list li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  color: var(--accent-yellow);
+  font-size: 0.8rem;
+}
+
+/* Pilares & Passos */
+.pilares-grid, .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.pilar-box, .step-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.pilar-num {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--accent-yellow);
+}
+
+.pilar-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin: 6px 0;
+  text-transform: uppercase;
+}
+
+.pilar-desc, .step-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.step-badge {
+  background: var(--accent-yellow);
+  color: #000;
+  font-weight: 900;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.step-card h4 {
+  color: var(--text-white);
+  margin: 10px 0 5px 0;
+  text-transform: uppercase;
+}
+
+/* Faixas de Destaque */
+.quote-banner {
+  background: linear-gradient(90deg, #004488 0%, #001f40 100%);
+  border: 1px solid var(--accent-blue);
+  border-left: 5px solid var(--accent-yellow);
+  color: var(--text-white);
+  text-align: center;
+  padding: 16px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-top: 25px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+/* Tabelas */
+.comparativo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.comparativo-table th {
+  padding: 12px;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.th-green { background-color: #005a2b; color: #fff; }
+.th-red { background-color: #7a1414; color: #fff; }
+
+.comparativo-table td {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  vertical-align: top;
+  width: 50%;
+}
+
+.comparativo-table ul {
+  list-style: square;
+  padding-left: 18px;
+  color: #d0e4ff;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Rodapé & Banner Amarelo Cidade Nobre */
+footer {
+  text-align: center;
+  padding: 25px 20px 20px 20px;
+  background-color: #030a14;
+  border-top: 1px solid var(--border-color);
+}
+
+.discord-link {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-white);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.discord-link span {
+  color: var(--accent-yellow);
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* Faixa Amarela Inferior (Estilo Poster) */
+.bottom-yellow-bar {
+  height: 12px;
+  background: linear-gradient(90deg, var(--accent-yellow) 0%, var(--accent-yellow-dark) 100%);
+  width: 100%;
+}
+
+/* Ajuste para ecrãs pequenos */
+@media (max-width: 600px) {
+  .nobre-text { font-size: 3.5rem; }
+  .crown-svg { width: 50px; height: 35px; }
+  .tab-btn { font-size: 0.78rem; padding: 12px 8px; }
+  .tab-content { padding: 18px; }
+}
